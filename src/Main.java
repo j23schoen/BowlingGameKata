@@ -12,11 +12,11 @@ public class Main {
         int frameIndex = 0;
 
         for(int i = 0; i < 10; i++){
-            if(rolls[frameIndex] == 10){
+            if(checkifStrike(frameIndex)){
                 total += 10 + rolls[frameIndex + 1] + rolls[frameIndex + 2];
                 frameIndex++;
             }
-            else if(rolls[frameIndex] + rolls[frameIndex + 1] == 10){
+            else if(checkIfSpare(frameIndex)){
                 total += 10 + rolls[frameIndex + 2];
                 frameIndex += 2;
             }
@@ -26,7 +26,24 @@ public class Main {
             }
 
         }
-
         return total;
+    }
+
+    public boolean checkIfSpare(int frameIndex){
+        if(rolls[frameIndex] + rolls[frameIndex + 1] == 10){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public boolean checkifStrike(int frameIndex){
+        if(rolls[frameIndex] == 10){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
