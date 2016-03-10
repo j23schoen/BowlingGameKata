@@ -12,7 +12,11 @@ public class Main {
         int frameIndex = 0;
 
         for(int i = 0; i < 10; i++){
-            if(rolls[frameIndex] + rolls[frameIndex + 1] == 10){
+            if(rolls[frameIndex] == 10){
+                total += 10 + rolls[frameIndex + 1] + rolls[frameIndex + 2];
+                frameIndex++;
+            }
+            else if(rolls[frameIndex] + rolls[frameIndex + 1] == 10){
                 total += 10 + rolls[frameIndex + 2];
                 frameIndex += 2;
             }
