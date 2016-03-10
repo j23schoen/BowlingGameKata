@@ -5,6 +5,7 @@ import org.junit.Test;
 public class BowlingTester {
 
     Main game;
+
     @Before
     public void setUp(){
         game = new Main();
@@ -27,13 +28,13 @@ public class BowlingTester {
         game.addRollsToGame(5);
         game.addRollsToGame(7);
         game.addRollsToGame(2);
-        fillRemainingFrames(15, 0);
+        addRemainingRolls(15, 0);
         Assert.assertEquals(34, game.calculate());
     }
 
 
-    public void fillRemainingFrames(int framesRemaining, int pins){
-        for(int i = 0; i < framesRemaining; i++){
+    public void addRemainingRolls(int numberOfRolls, int pins){
+        for(int i = 0; i < numberOfRolls; i++){
             game.addRollsToGame(pins);
         }
     }
