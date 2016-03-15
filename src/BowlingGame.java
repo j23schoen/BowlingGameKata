@@ -1,14 +1,28 @@
+import java.util.Arrays;
+
 public class BowlingGame {
 
-    private int[] rolls;
+
     private int gameScore;
-    int framePosition;
+    private int framePosition;
+    private int[] rolls;
+
     public BowlingGame() {
         gameScore = 0;
         framePosition = 0;
+        rolls = new int[21];
     }
 
-    public int findScoreOfBowlingGame(int[] rolls){
+    public void createNewGame(int[] inputArray){
+        rolls = Arrays.copyOf(inputArray, inputArray.length);
+        findScoreOfBowlingGame();
+    }
+
+    public int updateScore(){
+        return gameScore;
+    }
+
+    private void findScoreOfBowlingGame(){
         for(int i = 0; i < 10; i++){
             if(checkForStrike(framePosition)){
                 updateScoreForStrike();
@@ -20,7 +34,6 @@ public class BowlingGame {
                 updateScoreForNonSpecialRolls();
             }
         }
-        return gameScore;
     }
 
     private boolean checkForSpare(int frameIndex){

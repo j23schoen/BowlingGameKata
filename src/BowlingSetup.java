@@ -1,6 +1,6 @@
 public class BowlingSetup {
 
-    private int[] rolls;
+    int[] rolls;
     private int index;
     BowlingGame game;
 
@@ -12,7 +12,14 @@ public class BowlingSetup {
 
     public void addRollsToGame(int pins){
         rolls[index++] = pins;
-        game.findScoreOfBowlingGame(rolls);
+    }
+
+    public void createGame(){
+        game.createNewGame(rolls);
+    }
+
+    public int gameTotal(){
+        return game.updateScore();
     }
 
 
