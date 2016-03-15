@@ -4,11 +4,11 @@ import org.junit.Test;
 
 public class BowlingTester {
 
-    Main game;
+    BowlingGame game;
 
     @Before
     public void setUp(){
-        game = new Main();
+        game = new BowlingGame();
     }
 
     @Test

@@ -1,7 +1,7 @@
-public class Main {
+public class BowlingGame {
 
-    int[] rolls = new int[21];
-    int index = 0;
+    private int[] rolls = new int[21];
+    private int index = 0;
 
     public void addRollsToGame(int pins){
         rolls[index++] = pins;
@@ -29,21 +29,11 @@ public class Main {
         return gameScore;
     }
 
-    public boolean checkIfASpareWasThrown(int frameIndex){
-        if(rolls[frameIndex] + rolls[frameIndex + 1] == 10){
-            return true;
-        }
-        else{
-            return false;
-        }
+    private boolean checkIfASpareWasThrown(int frameIndex){
+        return rolls[frameIndex] + rolls[frameIndex + 1] == 10;
     }
 
-    public boolean checkIfAStrikeWasThrown(int frameIndex){
-        if(rolls[frameIndex] == 10){
-            return true;
-        }
-        else{
-            return false;
-        }
+    private boolean checkIfAStrikeWasThrown(int frameIndex){
+        return rolls[frameIndex] == 10;
     }
 }
