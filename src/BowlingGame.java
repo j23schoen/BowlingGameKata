@@ -1,39 +1,51 @@
 public class BowlingGame {
 
-    private int[] rolls = new int[21];
-    private int index = 0;
-
-    public void addRollsToGame(int pins){
-        rolls[index++] = pins;
+    private int[] rolls;
+    private int gameScore;
+    int framePosition;
+    public BowlingGame() {
+        gameScore = 0;
+        framePosition = 0;
     }
 
-    public int findScoreOfBowlingGame(){
-        int gameScore = 0;
-        int framePosition = 0;
-
+    public int findScoreOfBowlingGame(int[] rolls){
         for(int i = 0; i < 10; i++){
-            if(checkIfAStrikeWasThrown(framePosition)){
-                gameScore += 10 + rolls[framePosition + 1] + rolls[framePosition + 2];
-                framePosition++;
+            if(checkForStrike(framePosition)){
+                updateScoreForStrike();
             }
-            else if(checkIfASpareWasThrown(framePosition)){
-                gameScore += 10 + rolls[framePosition + 2];
-                framePosition += 2;
+            else if(checkForSpare(framePosition)){
+                updateScoreForSpare();
             }
             else{
-                gameScore += rolls[framePosition] + rolls[framePosition + 1];
-                framePosition += 2;
+                updateScoreForNonSpecialRolls();
             }
-
         }
         return gameScore;
     }
 
-    private boolean checkIfASpareWasThrown(int frameIndex){
+    private boolean checkForSpare(int frameIndex){
         return rolls[frameIndex] + rolls[frameIndex + 1] == 10;
     }
 
-    private boolean checkIfAStrikeWasThrown(int frameIndex){
+    private boolean checkForStrike(int frameIndex){
         return rolls[frameIndex] == 10;
+    }
+
+    private int updateScoreForStrike(){
+        gameScore += 10 + rolls[framePosition + 1] + rolls[framePosition + 2];
+        framePosition++;
+        return gameScore;
+    }
+
+    private int updateScoreForSpare(){
+        gameScore += 10 + rolls[framePosition + 2];
+        framePosition += 2;
+        return gameScore;
+    }
+
+    private int updateScoreForNonSpecialRolls(){
+        gameScore += rolls[framePosition] + rolls[framePosition + 1];
+        framePosition += 2;
+        return gameScore;
     }
 }

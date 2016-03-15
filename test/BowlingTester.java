@@ -60,7 +60,7 @@ public class BowlingTester {
         Assert.assertEquals(300, game.findScoreOfBowlingGame());
     }
 
-    public void addRemainingRolls(int numberOfRolls, int pins){
+    private void addRemainingRolls(int numberOfRolls, int pins){
         for(int i = 0; i < numberOfRolls; i++){
             game.addRollsToGame(pins);
         }
