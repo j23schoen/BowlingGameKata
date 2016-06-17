@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 public class BowlingGame {
-
+//Lets make this fail!
 
     private int gameScore;
     private int framePosition;
@@ -23,7 +23,7 @@ public class BowlingGame {
     }
 
     private void findScoreOfBowlingGame(){
-        for(int i = 0; i < 10; i++){
+        for(int i = 0; i < 11; i++){
             if(checkForStrike(framePosition)){
                 updateScoreForStrike();
             }
